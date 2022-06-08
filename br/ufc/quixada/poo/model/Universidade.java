@@ -24,8 +24,8 @@ public class Universidade {
   public String toString() {
     String dados = "-------------------------------------- \n" +
         "Imprimindo informações da universidade: \n" +
-        "Nome:[" + nome + "]" +
-        ", Local:" + local;
+        "Nome:[" + this.nome + "]" +
+        ", Local:" + this.local;
 
     return dados;
   }
