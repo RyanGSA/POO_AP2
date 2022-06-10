@@ -84,4 +84,5 @@ public class Aluno {
          "\n ano_ingresso= " + ano_ingresso +
          "\n matricula= " + matricula +"\n";
     }
+
 }

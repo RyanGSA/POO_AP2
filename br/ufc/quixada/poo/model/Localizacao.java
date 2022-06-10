@@ -26,7 +26,7 @@ public class Localizacao {
   }
 
   public String toString() {
-    return "[cidade=" + cidade + ", estado=" + estado + "]";
+    return "[cidade=" + this.cidade + ", estado=" + this.estado + "]";
   }
 
 }
