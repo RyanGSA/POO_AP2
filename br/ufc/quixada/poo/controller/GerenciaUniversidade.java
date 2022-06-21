@@ -24,8 +24,6 @@ public interface GerenciaUniversidade {
 
   public boolean removerAluno(String nome);
 
-  public boolean removerAlunoID(int matricula);
-
   public Aluno getAluno(String nome);
 
   public Aluno alterarCurso(String nomeCurso);

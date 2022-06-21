@@ -1,8 +1,12 @@
 import br.ufc.quixada.poo.controller.UniversidadeController;
+import br.ufc.quixada.poo.ui.TraineeUI;
 
 public class Main {
     public static void main(String[] args) {
-        UniversidadeController teste = new UniversidadeController();
-        teste.menu(); //placeholder para o menu
+
+        UniversidadeController gerencia = new UniversidadeController();
+
+        TraineeUI traineeUIMemoria = new TraineeUI(gerencia);
+        traineeUIMemoria.run();
     }
 }

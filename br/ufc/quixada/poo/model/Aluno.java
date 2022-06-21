@@ -4,12 +4,14 @@ public class Aluno {
     private String nome;
     private String email;
     private String telefone;
-    private String endereco;
+    private Localizacao endereco;
     private String data_nascimento;
     private int ano_ingresso;
     private int matricula;
+    private String curso;
 
-    public Aluno (String nome, String email, String telefone, String endereco, String data_nascimento, int ano_ingresso, int matricula) {
+    public Aluno(String nome, String email, String telefone, Localizacao endereco, String data_nascimento,
+            int ano_ingresso, int matricula, String curso) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
@@ -17,6 +19,15 @@ public class Aluno {
         this.data_nascimento = data_nascimento;
         this.ano_ingresso = ano_ingresso;
         this.matricula = matricula;
+        this.curso = curso;
+    }
+
+    public Aluno(String nome, Localizacao endereco, int ano_ingresso, int matricula, String curso) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.ano_ingresso = ano_ingresso;
+        this.matricula = matricula;
+        this.curso = curso;
     }
 
     public String getNome() {
@@ -43,11 +54,11 @@ public class Aluno {
         this.telefone = telefone;
     }
 
-    public String getEndereco() {
+    public Localizacao getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Localizacao endereco) {
         this.endereco = endereco;
     }
 
@@ -75,13 +86,21 @@ public class Aluno {
         this.matricula = matricula;
     }
 
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
     public String toString() {
         return "nome= " + this.nome +
-         "\n email= " + this.email +
-         "\n telefone= " + this.telefone +
-         "\n endereco= " + this.endereco +
-         "\n data_nascimento= " + this.data_nascimento +
-         "\n ano_ingresso= " + this.ano_ingresso +
-         "\n matricula= " + this.matricula +"\n";
+                "\n email= " + this.email +
+                "\n telefone= " + this.telefone +
+                "\n endereco= " + this.endereco +
+                "\n data_nascimento= " + this.data_nascimento +
+                "\n ano_ingresso= " + this.ano_ingresso +
+                "\n matricula= " + this.matricula + "\n";
     }
 }
