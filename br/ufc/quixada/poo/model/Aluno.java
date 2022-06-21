@@ -76,13 +76,12 @@ public class Aluno {
     }
 
     public String toString() {
-        return "nome= " + nome +
-         "\n email= " + email +
-         "\n telefone= " + telefone +
-         "\n endereco= " + endereco +
-         "\n data_nascimento= " + data_nascimento +
-         "\n ano_ingresso= " + ano_ingresso +
-         "\n matricula= " + matricula +"\n";
+        return "nome= " + this.nome +
+         "\n email= " + this.email +
+         "\n telefone= " + this.telefone +
+         "\n endereco= " + this.endereco +
+         "\n data_nascimento= " + this.data_nascimento +
+         "\n ano_ingresso= " + this.ano_ingresso +
+         "\n matricula= " + this.matricula +"\n";
     }
-
 }

@@ -36,6 +36,6 @@ public class Curso {
     }
 
     public String toString() {
-        return "[nome=" + nome + ", carga_horaria=" + carga_horaria + ", turno=" + turno + "]";
+        return "[nome=" + this.nome + ", carga_horaria=" + this.carga_horaria + ", turno=" + this.turno + "]";
     }
 }
