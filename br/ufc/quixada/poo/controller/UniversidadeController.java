@@ -15,46 +15,88 @@ public class UniversidadeController implements GerenciaUniversidade {
     this.universidades = new ArrayList<Universidade>();
   }
 
-  @Override
   public boolean adicionarUniversidade(Universidade universidade) {
-    // TODO Auto-generated method stub
-    return false;
+    universidades.add(universidade);
+    return true;
   }
 
-  @Override
   public boolean removerUniversidade(String nome) {
-    // TODO Auto-generated method stub
-    return false;
+
+    Universidade universidadeProcurando = getUniversidade(nome);
+    boolean apaguei = false;
+
+    if (universidadeProcurando != null) {
+      this.universidades.remove(universidadeProcurando);
+      apaguei = true;
+    }
+    return apaguei;
   }
 
-  @Override
-  public boolean modificarDiretor(String nomeDiretor) {
-    // TODO Auto-generated method stub
-    return false;
+  public boolean modificarDiretor(String nomeUniversidae, String nomeDiretor) {
+    Universidade universidadeProcurando = getUniversidade(nomeUniversidae);
+    boolean modifiquei = false;
+
+    if (universidadeProcurando != null) {
+      universidadeProcurando.setNomeDiretor(nomeDiretor);
+      modifiquei = true;
+    }
+
+    return modifiquei;
   }
 
-  @Override
+  public Universidade getUniversidade(String nome) {
+    Universidade universidadeProcurando = null;
+
+    for (Universidade v : universidades) {
+      String nomeUniversidade = v.getNome();
+      if (nome.equals(nomeUniversidade)) {
+        universidadeProcurando = v;
+        break;
+      }
+    }
+    return universidadeProcurando;
+  }
+
   public ArrayList<Universidade> imprimirListaUniversidade() {
-    // TODO Auto-generated method stub
-    return null;
+    return universidades;
+  }
+
+  public boolean adicionarAluno(String nomeUniversidade, Aluno aluno) {
+    Universidade universidadeProcurando = getUniversidade(nomeUniversidade);
+    boolean adicionei = false;
+
+    if (universidadeProcurando != null) {
+      universidadeProcurando.addAluno(aluno);
+      adicionei = true;
+    }
+    return adicionei;
+  }
+
+  public boolean removerAluno(String nomeUniversidade, String nomeAluno) {
+    Universidade universidadeProcurando = getUniversidade(nomeUniversidade);
+    boolean removi = false;
+
+    if (universidadeProcurando != null) {
+      Aluno alunoProcurando = getAluno(universidadeProcurando, nomeAluno);
+      if (alunoProcurando != null) {
+        universidadeProcurando.removerAluno(alunoProcurando);
+        removi = true;
+      }
+    }
+    return removi;
   }
 
   @Override
-  public boolean adicionarAluno(Aluno aluno) {
-    // TODO Auto-generated method stub
-    return false;
-  }
+  public Aluno getAluno(Universidade universidade, String nome) {
+    Aluno alunoProcurado = null;
+    ArrayList<Aluno> alunos = universidade.getAlunos();
 
-  @Override
-  public boolean removerAluno(String nome) {
-    // TODO Auto-generated method stub
-    return false;
-  }
-
-  @Override
-  public Aluno getAluno(String nome) {
-    // TODO Auto-generated method stub
-    return null;
+    for (Aluno alu : alunos) {
+      if (alu.getNome().equals(nome)) {
+        alunoProcurado = alu;
+      }
+    }
+    return alunoProcurado;
   }
 
   @Override
