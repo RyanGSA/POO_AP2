@@ -10,7 +10,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import br.ufc.quixada.poo.controller.GerenciaUniversidade;
+
 public class TraineeGUI implements ActionListener {
+
+    private GerenciaUniversidade gerencia;
 
     private JButton button;
     private JButton button2;
@@ -18,7 +22,10 @@ public class TraineeGUI implements ActionListener {
     private JButton button4;
     private JButton button5;
 
-    public TraineeGUI(){
+    public TraineeGUI( GerenciaUniversidade controlador ){
+
+        gerencia = controlador;
+
         JFrame frame = new JFrame(); 
         JPanel panel = new JPanel(); 
 
@@ -60,13 +67,13 @@ public class TraineeGUI implements ActionListener {
             JOptionPane.showMessageDialog(null, "option 1");
         }
         else if(e.getSource() == button2){
-            new AlunoGUI();
+            new AlunoGUI(this.gerencia);
         }
         else if(e.getSource() == button3){
-            new UniversidadeGUI();
+            new UniversidadeGUI(this.gerencia);
         }
         else if(e.getSource() == button4){
-            new CursoGUI();
+            new CursoGUI(this.gerencia);
         }
         else if(e.getSource() == button5){
             System.exit(0);

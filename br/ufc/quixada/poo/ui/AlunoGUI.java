@@ -10,14 +10,19 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import br.ufc.quixada.poo.model.Aluno;
+import br.ufc.quixada.poo.controller.GerenciaUniversidade;
+
 public class AlunoGUI implements ActionListener {
+
+    private GerenciaUniversidade gerencia;
 
     private JButton button;
     private JButton button2;
     private JButton button3;
     private JButton button4;
 
-    public AlunoGUI(){
+    public AlunoGUI( GerenciaUniversidade controlador ){
         JFrame frame = new JFrame(); 
         JPanel panel = new JPanel(); 
 

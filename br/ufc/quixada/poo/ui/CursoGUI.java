@@ -10,14 +10,19 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import br.ufc.quixada.poo.model.Curso;
+import br.ufc.quixada.poo.controller.GerenciaUniversidade;
+
 public class CursoGUI implements ActionListener {
+
+    private GerenciaUniversidade gerencia;
 
     private JButton button;
     private JButton button2;
     private JButton button3;
     private JButton button4;
 
-    public CursoGUI(){
+    public CursoGUI( GerenciaUniversidade controlador ){
         JFrame frame = new JFrame(); 
         JPanel panel = new JPanel(); 
 
@@ -53,9 +58,19 @@ public class CursoGUI implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == button){
-            JOptionPane.showMessageDialog(null, "curso adicionado com sucesso");
+            String nome = JOptionPane.showInputDialog("Digite o nome do curso:");
+            int carga_horaria = Integer.parseInt(JOptionPane.showInputDialog("Digite a carga horaria do curso"));
+            String turno = JOptionPane.showInputDialog("Digite o turno do curso");
+            
+            Curso n = new Curso(nome, carga_horaria, turno);
+            
+            boolean add = gerencia.adicionarCurso(n);
+            if(add)JOptionPane.showMessageDialog(null, "curso adicionado com sucesso");
+            else JOptionPane.showMessageDialog(null, "erro ao adicionar curso");
         }
         else if(e.getSource() == button2){
+
+            //GerenciaUniversidade.alterarCurso();
             JOptionPane.showMessageDialog(null, "curso alterado com sucesso");
         }
         else if(e.getSource() == button3){
