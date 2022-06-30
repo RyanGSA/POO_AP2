@@ -23,6 +23,9 @@ public class AlunoGUI implements ActionListener {
     private JButton button4;
 
     public AlunoGUI( GerenciaUniversidade controlador ){
+
+        gerencia = controlador;
+
         JFrame frame = new JFrame(); 
         JPanel panel = new JPanel(); 
 
@@ -58,17 +61,33 @@ public class AlunoGUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e){
+        //opcao de adicionar um aluno
         if(e.getSource() == button){
-            JOptionPane.showMessageDialog(null, "aluno adicionado com sucesso");
+            String nome_uni = JOptionPane.showInputDialog("Digite o nome da universidade:");
+            String nome = JOptionPane.showInputDialog("Digite o nome do aluno:");
+            int ano = Integer.parseInt(JOptionPane.showInputDialog("Digite o ano de ingresso do aluno:"));
+            int matricula = Integer.parseInt(JOptionPane.showInputDialog("Digite a matricula do aluno:"));
+
+            Aluno m = new Aluno(nome,ano,matricula);
+            
+            if(gerencia.adicionarAluno(nome_uni, m))JOptionPane.showMessageDialog(null, "aluno adicionado com sucesso");
+            else JOptionPane.showMessageDialog(null, "erro ao adicionar aluno");
         }
+        //opcao de alterar um aluno
         else if(e.getSource() == button2){
             JOptionPane.showMessageDialog(null, "aluno alterado com sucesso");
         }
+        //opcao de listar todos os alunos
         else if(e.getSource() == button3){
             JOptionPane.showMessageDialog(null, "(lista de alunos aqui)");
         }
+        //opcao de excluir aluno
         else if(e.getSource() == button4){
-            JOptionPane.showMessageDialog(null, "aluno excluido com sucesso");
+            String nome_uni = JOptionPane.showInputDialog("Digite o nome da universidade:");
+            String nome = JOptionPane.showInputDialog("Digite o nome do aluno:");
+            
+            if(gerencia.removerAluno(nome_uni, nome))JOptionPane.showMessageDialog(null, "aluno excluido com sucesso");
+            else JOptionPane.showMessageDialog(null, "erro ao excluir aluno");
         }
     }
 }

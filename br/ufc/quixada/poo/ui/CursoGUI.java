@@ -23,6 +23,9 @@ public class CursoGUI implements ActionListener {
     private JButton button4;
 
     public CursoGUI( GerenciaUniversidade controlador ){
+
+        gerencia = controlador;
+
         JFrame frame = new JFrame(); 
         JPanel panel = new JPanel(); 
 
@@ -57,25 +60,26 @@ public class CursoGUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e){
+        //opcao de adicionar um curso
         if(e.getSource() == button){
-            String nome = JOptionPane.showInputDialog("Digite o nome do curso:");
-            int carga_horaria = Integer.parseInt(JOptionPane.showInputDialog("Digite a carga horaria do curso"));
-            String turno = JOptionPane.showInputDialog("Digite o turno do curso");
+            String nom = JOptionPane.showInputDialog("Digite o nome do curso:");
+            int carga_horari = Integer.parseInt(JOptionPane.showInputDialog("Digite a carga horaria do curso:"));
+            String turn = JOptionPane.showInputDialog("Digite o turno do curso:");
             
-            Curso n = new Curso(nome, carga_horaria, turno);
+            Curso n = new Curso(nom, carga_horari, turn);
             
-            boolean add = gerencia.adicionarCurso(n);
-            if(add)JOptionPane.showMessageDialog(null, "curso adicionado com sucesso");
+            if(gerencia.adicionarCurso(n))JOptionPane.showMessageDialog(null, "curso adicionado com sucesso");
             else JOptionPane.showMessageDialog(null, "erro ao adicionar curso");
         }
+        //opcao de alterar um curso
         else if(e.getSource() == button2){
-
-            //GerenciaUniversidade.alterarCurso();
             JOptionPane.showMessageDialog(null, "curso alterado com sucesso");
         }
+        //opcao de listar todos os cursos
         else if(e.getSource() == button3){
             JOptionPane.showMessageDialog(null, "(lista de cursos aqui)");
         }
+        //opcao de excluir um curso
         else if(e.getSource() == button4){
             JOptionPane.showMessageDialog(null, "curso excluido com sucesso");
         }

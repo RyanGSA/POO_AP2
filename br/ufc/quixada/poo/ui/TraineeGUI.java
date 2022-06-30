@@ -63,18 +63,23 @@ public class TraineeGUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e){
+        //dado um estado, uma cidade e um curso, mostrar os alunos matriculados em cada universidade
         if(e.getSource() == button){
             JOptionPane.showMessageDialog(null, "option 1");
         }
+        //abre menu de alunos
         else if(e.getSource() == button2){
             new AlunoGUI(this.gerencia);
         }
+        //abre menu de universidades
         else if(e.getSource() == button3){
             new UniversidadeGUI(this.gerencia);
         }
+        //abre menu de cursos
         else if(e.getSource() == button4){
             new CursoGUI(this.gerencia);
         }
+        //fecha o programa
         else if(e.getSource() == button5){
             System.exit(0);
         }

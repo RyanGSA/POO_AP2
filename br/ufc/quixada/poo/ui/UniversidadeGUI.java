@@ -23,6 +23,9 @@ public class UniversidadeGUI implements ActionListener {
     private JButton button4;
 
     public UniversidadeGUI( GerenciaUniversidade controlador ){
+
+        gerencia = controlador;
+
         JFrame frame = new JFrame(); 
         JPanel panel = new JPanel(); 
 
