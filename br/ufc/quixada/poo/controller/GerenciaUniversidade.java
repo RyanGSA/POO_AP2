@@ -39,10 +39,7 @@ public interface GerenciaUniversidade {
   // retorna um aluno com mesmo nome
   public Aluno getAluno(String nomeUniversidade, String nomeCurso, String nomeAluno);
 
-  // a grande funcao principal exigida no pdf *********
-  public ArrayList<Aluno> procurarCandidatos(Localizacao local, String curso);
-
-
+  
 
   // gerenciando os cursos
 
@@ -50,7 +47,7 @@ public interface GerenciaUniversidade {
   public Curso getCurso(String nomeUniversidade, String nomeCurso);
 
   // altera o curso
-  public Aluno alterarCurso(String nomeUniversidade, String nomeCurso);
+  public boolean alterarCurso(String nomeUniversidade, String nomeCurso, String nome, int carga, String turno);
 
   // adiciona um curso
   public boolean adicionarCurso(String nomeUniversidade, Curso curso);
@@ -60,4 +57,9 @@ public interface GerenciaUniversidade {
 
   // imprime todos os cursos
   public ArrayList<Curso> imprimirListaCurso(String nomeUniversidade);
+
+
+
+  // a grande funcao principal exigida no pdf *********
+  public ArrayList<Aluno> procurarCandidatos(Localizacao local, String curso);
 }

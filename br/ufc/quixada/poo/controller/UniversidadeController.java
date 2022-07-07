@@ -115,15 +115,18 @@ public class UniversidadeController implements GerenciaUniversidade {
   //metodos curso
 
   @Override
-  public Aluno alterarCurso(String nomeUniversidade, String nomeCurso) {
-    // TODO Auto-generated method stub
-    return null;
-  }
+  public boolean alterarCurso(String nomeUniversidade, String nomeCurso, String nome, int carga, String turno) {
+    Curso cursoProcurando = getCurso(nomeUniversidade, nomeCurso);
+    boolean modifiquei = false;
 
-  @Override
-  public ArrayList<Aluno> procurarCandidatos(Localizacao local, String curso) {
-    // TODO Auto-generated method stub
-    return null;
+    if (cursoProcurando != null) {
+      cursoProcurando.setNome(nome);
+      cursoProcurando.setCarga(carga);
+      cursoProcurando.setTurno(turno);
+      modifiquei = true;
+    }
+
+    return modifiquei;
   }
 
   @Override
@@ -140,8 +143,14 @@ public class UniversidadeController implements GerenciaUniversidade {
 
   @Override
   public boolean removerCurso(String nomeUniversidade, String nomeCurso) {
-    // TODO Auto-generated method stub
-    return false;
+    Curso cursoProcurando = getCurso(nomeUniversidade, nomeCurso);
+    boolean apaguei = false;
+
+    if (cursoProcurando != null) {
+      getUniversidade(nomeUniversidade).getCursos().remove(cursoProcurando);
+      apaguei = true;
+    }
+    return apaguei;
   }
 
   @Override
@@ -160,5 +169,13 @@ public class UniversidadeController implements GerenciaUniversidade {
       }
     }
     return cursoProcurado;
+  }
+
+
+
+  @Override
+  public ArrayList<Aluno> procurarCandidatos(Localizacao local, String curso) {
+    // TODO Auto-generated method stub
+    return null;
   }
 }

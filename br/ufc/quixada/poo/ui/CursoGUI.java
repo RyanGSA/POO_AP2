@@ -62,7 +62,7 @@ public class CursoGUI implements ActionListener {
     public void actionPerformed(ActionEvent e){
         //opcao de adicionar um curso
         if(e.getSource() == button){
-            String nom_uni = JOptionPane.showInputDialog("Digite o nome da universidade:");
+            String nom_uni = JOptionPane.showInputDialog("Atuais universidades:\n" + gerencia.imprimirListaUniversidade() + "\nDigite o nome da universidade:");
             String nom = JOptionPane.showInputDialog("Digite o nome do curso:");
             int carga_horari = Integer.parseInt(JOptionPane.showInputDialog("Digite a carga horaria do curso:"));
             String turn = JOptionPane.showInputDialog("Digite o turno do curso:");
@@ -74,7 +74,14 @@ public class CursoGUI implements ActionListener {
         }
         //opcao de alterar um curso
         else if(e.getSource() == button2){
-            JOptionPane.showMessageDialog(null, "curso alterado com sucesso");
+            String nom_uni = JOptionPane.showInputDialog("Atuais universidades:\n" + gerencia.imprimirListaUniversidade() + "\nDigite o nome da universidade:");
+            String nom_cur = JOptionPane.showInputDialog("Atuais cursos:\n" + gerencia.imprimirListaCurso(nom_uni) + "\nDigite o curso a ser alterado:");
+            String nom = JOptionPane.showInputDialog("Digite o nome do curso:");
+            int carga_horari = Integer.parseInt(JOptionPane.showInputDialog("Digite a carga horaria do curso:"));
+            String turn = JOptionPane.showInputDialog("Digite o turno do curso:");
+
+            if(gerencia.alterarCurso(nom_uni,nom_cur,nom,carga_horari,turn))JOptionPane.showMessageDialog(null, "curso alterado com sucesso");
+            else JOptionPane.showMessageDialog(null, "erro ao alterar curso");
         }
         //opcao de listar todos os cursos
         else if(e.getSource() == button3){
@@ -83,7 +90,11 @@ public class CursoGUI implements ActionListener {
         }
         //opcao de excluir um curso
         else if(e.getSource() == button4){
-            JOptionPane.showMessageDialog(null, "curso excluido com sucesso");
+            String nom_uni = JOptionPane.showInputDialog("Atuais universidades:\n" + gerencia.imprimirListaUniversidade() + "\nDigite o nome da universidade:");
+            String nom = JOptionPane.showInputDialog("Atuais cursos:\n" + gerencia.imprimirListaCurso(nom_uni) + "\nDigite o curso a ser excluido:");
+
+            if(gerencia.removerCurso(nom_uni,nom))JOptionPane.showMessageDialog(null, "curso excluido com sucesso");
+            else JOptionPane.showMessageDialog(null, "erro ao excluir curso");
         }
     }
 }

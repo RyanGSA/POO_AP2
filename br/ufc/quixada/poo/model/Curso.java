@@ -12,6 +12,7 @@ public class Curso {
         this.nome = nome;
         this.carga_horaria = carga_horaria;
         this.turno = turno;
+        alunos = new ArrayList<Aluno>();
     }
 
     public String getNome() {
@@ -51,6 +52,10 @@ public class Curso {
     }
 
     public String toString() {
-        return "[nome=" + this.nome + ", carga_horaria=" + this.carga_horaria + ", turno=" + this.turno + "]";
+        String dados = "\n" +
+            "Nome:" + this.nome + "\n" + 
+            "Carga Horaria:" + this.carga_horaria + "\n" +
+            "Turno:" + this.turno + "\n";
+        return dados;
     }
 }

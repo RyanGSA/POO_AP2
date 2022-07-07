@@ -10,6 +10,7 @@ public class Localizacao {
   public Localizacao(String estado, String cidade) {
     this.estado = estado;
     this.cidade = cidade;
+    universidades = new ArrayList<Universidade>();
   }
 
   public String getEstado() {

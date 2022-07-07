@@ -8,10 +8,11 @@ public class Universidade {
   private String nomeDiretor;
   private ArrayList<Curso> cursos;
 
-  public Universidade(String nome, Localizacao localizacao) {
+  public Universidade(String nome, Localizacao localizacao, String diretor) {
     this.nome = nome;
     this.local = localizacao;
-    cursos = null;
+    this.nomeDiretor = diretor;
+    cursos = new ArrayList<Curso>();
   }
 
   public Localizacao getLocal() {
@@ -51,7 +52,6 @@ public class Universidade {
         "Nome:" + this.nome + "\n" + 
         this.local +
         "Diretor:" + this.nomeDiretor + "\n";
-
     return dados;
   }
 

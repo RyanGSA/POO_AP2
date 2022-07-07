@@ -66,10 +66,11 @@ public class UniversidadeGUI implements ActionListener {
             String nome = JOptionPane.showInputDialog("Digite o nome da universidade:");
             String estado = JOptionPane.showInputDialog("Digite o estado onde a universidade fica:");
             String cidade = JOptionPane.showInputDialog("Digite a cidade onde a universidade fica:");
+            String diretor = JOptionPane.showInputDialog("Digite o nome do diretor:");
             
             Localizacao local_uni = new Localizacao(estado, cidade);
 
-            Universidade m = new Universidade(nome, local_uni);
+            Universidade m = new Universidade(nome, local_uni, diretor);
             
             if(gerencia.adicionarUniversidade(m))JOptionPane.showMessageDialog(null, "universidade adicionado com sucesso");
             else JOptionPane.showMessageDialog(null, "erro ao adicionar universidade");
