@@ -1,9 +1,12 @@
 package br.ufc.quixada.poo.model;
 
+import java.util.ArrayList;
+
 public class Curso {
     private String nome;
     private int carga_horaria;
     private String turno;
+    private ArrayList<Aluno> alunos;
     
     public Curso(String nome, int carga_horaria, String turno) {
         this.nome = nome;
@@ -33,6 +36,18 @@ public class Curso {
 
     public void setTurno(String turno) {
         this.turno = turno;
+    }
+
+    public void addAluno(Aluno aluno) {
+        alunos.add(aluno);
+    }
+    
+    public void removerAluno(Aluno aluno) {
+        alunos.remove(aluno);
+    }
+
+    public ArrayList<Aluno> getAlunos() {
+        return alunos;
     }
 
     public String toString() {

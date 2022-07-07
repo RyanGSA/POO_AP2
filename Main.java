@@ -1,4 +1,3 @@
-//import br.ufc.quixada.poo.controller.UniversidadeController;
 import br.ufc.quixada.poo.controller.GerenciaUniversidade;
 import br.ufc.quixada.poo.controller.UniversidadeController;
 import br.ufc.quixada.poo.ui.TraineeGUI;

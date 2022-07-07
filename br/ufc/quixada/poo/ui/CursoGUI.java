@@ -62,13 +62,14 @@ public class CursoGUI implements ActionListener {
     public void actionPerformed(ActionEvent e){
         //opcao de adicionar um curso
         if(e.getSource() == button){
+            String nom_uni = JOptionPane.showInputDialog("Digite o nome da universidade:");
             String nom = JOptionPane.showInputDialog("Digite o nome do curso:");
             int carga_horari = Integer.parseInt(JOptionPane.showInputDialog("Digite a carga horaria do curso:"));
             String turn = JOptionPane.showInputDialog("Digite o turno do curso:");
             
             Curso n = new Curso(nom, carga_horari, turn);
             
-            if(gerencia.adicionarCurso(n))JOptionPane.showMessageDialog(null, "curso adicionado com sucesso");
+            if(gerencia.adicionarCurso(nom_uni,n))JOptionPane.showMessageDialog(null, "curso adicionado com sucesso");
             else JOptionPane.showMessageDialog(null, "erro ao adicionar curso");
         }
         //opcao de alterar um curso
@@ -77,7 +78,8 @@ public class CursoGUI implements ActionListener {
         }
         //opcao de listar todos os cursos
         else if(e.getSource() == button3){
-            JOptionPane.showMessageDialog(null, "(lista de cursos aqui)");
+            String nom_uni = JOptionPane.showInputDialog("Atuais universidades:\n" + gerencia.imprimirListaUniversidade() + "\nDigite o nome da universidade:");
+            JOptionPane.showMessageDialog(null, gerencia.imprimirListaCurso(nom_uni));
         }
         //opcao de excluir um curso
         else if(e.getSource() == button4){

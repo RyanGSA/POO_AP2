@@ -1,8 +1,11 @@
 package br.ufc.quixada.poo.model;
 
+import java.util.ArrayList;
+
 public class Localizacao {
   private String estado;
   private String cidade;
+  private ArrayList<Universidade> universidades;
 
   public Localizacao(String estado, String cidade) {
     this.estado = estado;
@@ -25,8 +28,16 @@ public class Localizacao {
     this.cidade = cidade;
   }
 
+  public void addUniversidade(Universidade universidade) {
+    universidades.add(universidade);
+  }
+
+  public void removeUniversidade(Universidade universidade) {
+    universidades.remove(universidade);
+  }
+
   public String toString() {
-    return "[cidade=" + this.cidade + ", estado=" + this.estado + "]";
+    return "Cidade: " + this.cidade + "\n" + "Estado: " + this.estado + "\n";
   }
 
 }

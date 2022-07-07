@@ -7,11 +7,15 @@ public class Universidade {
   private Localizacao local;
   private String nomeDiretor;
   private ArrayList<Curso> cursos;
-  private ArrayList<Aluno> alunos;
 
   public Universidade(String nome, Localizacao localizacao) {
     this.nome = nome;
     this.local = localizacao;
+    cursos = null;
+  }
+
+  public Localizacao getLocal() {
+    return local;
   }
 
   public String getNome() {
@@ -30,27 +34,23 @@ public class Universidade {
     this.nomeDiretor = nomeDiretor;
   }
 
-  public void addAluno(Aluno aluno) {
-    alunos.add(aluno);
-  }
-
-  public void removerAluno(Aluno aluno) {
-    alunos.remove(aluno);
-  }
-
   public void addCurso(Curso curso) {
     cursos.add(curso);
   }
 
-  public ArrayList<Aluno> getAlunos() {
-    return alunos;
+  public void removeCurso(Curso curso) {
+    cursos.remove(curso);
+  }
+
+  public ArrayList<Curso> getCursos(){
+    return cursos;
   }
 
   public String toString() {
-    String dados = "-------------------------------------- \n" +
-        "Imprimindo informações da universidade: \n" +
-        "Nome:[" + this.nome + "]" +
-        ", Local:" + this.local;
+    String dados = "\n" +
+        "Nome:" + this.nome + "\n" + 
+        this.local +
+        "Diretor:" + this.nomeDiretor + "\n";
 
     return dados;
   }

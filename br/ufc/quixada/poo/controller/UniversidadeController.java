@@ -15,6 +15,10 @@ public class UniversidadeController implements GerenciaUniversidade {
     this.universidades = new ArrayList<Universidade>();
   }
 
+
+  //-----------------------------------------------------------------------
+  //metodos universidade
+
   public boolean adicionarUniversidade(Universidade universidade) {
     universidades.add(universidade);
     return true;
@@ -32,12 +36,15 @@ public class UniversidadeController implements GerenciaUniversidade {
     return apaguei;
   }
 
-  public boolean modificarDiretor(String nomeUniversidae, String nomeDiretor) {
-    Universidade universidadeProcurando = getUniversidade(nomeUniversidae);
+  public boolean alterarUniversidade(String nomeUniversidade, String nome, String estado, String cidade, String diretor) {
+    Universidade universidadeProcurando = getUniversidade(nomeUniversidade);
     boolean modifiquei = false;
 
     if (universidadeProcurando != null) {
-      universidadeProcurando.setNomeDiretor(nomeDiretor);
+      universidadeProcurando.setNome(nome);
+      universidadeProcurando.getLocal().setEstado(estado);
+      universidadeProcurando.getLocal().setCidade(cidade);
+      universidadeProcurando.setNomeDiretor(diretor);
       modifiquei = true;
     }
 
@@ -61,25 +68,29 @@ public class UniversidadeController implements GerenciaUniversidade {
     return universidades;
   }
 
-  public boolean adicionarAluno(String nomeUniversidade, Aluno aluno) {
-    Universidade universidadeProcurando = getUniversidade(nomeUniversidade);
+
+  //-----------------------------------------------------------------------
+  //metodos aluno
+
+  public boolean adicionarAluno(String nomeUniversidade, String nomeCurso, Aluno aluno) {
+    Curso cursoProcurando = getCurso(nomeUniversidade, nomeCurso);
     boolean adicionei = false;
 
-    if (universidadeProcurando != null) {
-      universidadeProcurando.addAluno(aluno);
+    if (cursoProcurando != null) {
+      cursoProcurando.addAluno(aluno);
       adicionei = true;
     }
     return adicionei;
   }
 
-  public boolean removerAluno(String nomeUniversidade, String nomeAluno) {
-    Universidade universidadeProcurando = getUniversidade(nomeUniversidade);
+  public boolean removerAluno(String nomeUniversidade, String nomeCurso, String nomeAluno) {
+    Curso cursoProcurando = getCurso(nomeUniversidade,nomeCurso);
     boolean removi = false;
 
-    if (universidadeProcurando != null) {
-      Aluno alunoProcurando = getAluno(universidadeProcurando, nomeAluno);
+    if (cursoProcurando != null) {
+      Aluno alunoProcurando = getAluno(nomeUniversidade, cursoProcurando.getNome(), nomeAluno);
       if (alunoProcurando != null) {
-        universidadeProcurando.removerAluno(alunoProcurando);
+        cursoProcurando.removerAluno(alunoProcurando);
         removi = true;
       }
     }
@@ -87,20 +98,24 @@ public class UniversidadeController implements GerenciaUniversidade {
   }
 
   @Override
-  public Aluno getAluno(Universidade universidade, String nome) {
+  public Aluno getAluno(String nomeUniversidade, String nomeCurso, String nomeAluno) {
     Aluno alunoProcurado = null;
-    ArrayList<Aluno> alunos = universidade.getAlunos();
+    ArrayList<Aluno> alunos = getCurso(nomeUniversidade, nomeCurso).getAlunos();
 
     for (Aluno alu : alunos) {
-      if (alu.getNome().equals(nome)) {
+      if (alu.getNome().equals(nomeAluno)) {
         alunoProcurado = alu;
       }
     }
     return alunoProcurado;
   }
 
+
+  //-----------------------------------------------------------------------
+  //metodos curso
+
   @Override
-  public Aluno alterarCurso(String nomeCurso) {
+  public Aluno alterarCurso(String nomeUniversidade, String nomeCurso) {
     // TODO Auto-generated method stub
     return null;
   }
@@ -112,21 +127,38 @@ public class UniversidadeController implements GerenciaUniversidade {
   }
 
   @Override
-  public boolean adicionarCurso(Curso curso) {
+  public boolean adicionarCurso(String nomeUniversidade, Curso curso) {
+    Universidade universidadeProcurando = getUniversidade(nomeUniversidade);
+    boolean adicionei = false;
+
+    if (universidadeProcurando != null) {
+      universidadeProcurando.addCurso(curso);
+      adicionei = true;
+    }
+    return adicionei;
+  }
+
+  @Override
+  public boolean removerCurso(String nomeUniversidade, String nomeCurso) {
     // TODO Auto-generated method stub
     return false;
   }
 
   @Override
-  public boolean removerCurso(String nome) {
-    // TODO Auto-generated method stub
-    return false;
+  public ArrayList<Curso> imprimirListaCurso(String nomeUniversidade) {
+    return getUniversidade(nomeUniversidade).getCursos();
   }
 
   @Override
-  public ArrayList<Curso> imprimirListaCurso() {
-    // TODO Auto-generated method stub
-    return null;
-  }
+  public Curso getCurso(String nomeUniversidade, String nome) {
+    Curso cursoProcurado = null;
+    ArrayList<Curso> cursos = (getUniversidade(nomeUniversidade)).getCursos();
 
+    for (Curso cur : cursos) {
+      if (cur.getNome().equals(nome)) {
+        cursoProcurado = cur;
+      }
+    }
+    return cursoProcurado;
+  }
 }

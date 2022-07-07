@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import br.ufc.quixada.poo.model.Localizacao;
 import br.ufc.quixada.poo.model.Universidade;
 import br.ufc.quixada.poo.controller.GerenciaUniversidade;
 
@@ -60,17 +61,40 @@ public class UniversidadeGUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e){
+        //opcao de adicionar uma universidade
         if(e.getSource() == button){
-            JOptionPane.showMessageDialog(null, "universidade adicionada com sucesso");
+            String nome = JOptionPane.showInputDialog("Digite o nome da universidade:");
+            String estado = JOptionPane.showInputDialog("Digite o estado onde a universidade fica:");
+            String cidade = JOptionPane.showInputDialog("Digite a cidade onde a universidade fica:");
+            
+            Localizacao local_uni = new Localizacao(estado, cidade);
+
+            Universidade m = new Universidade(nome, local_uni);
+            
+            if(gerencia.adicionarUniversidade(m))JOptionPane.showMessageDialog(null, "universidade adicionado com sucesso");
+            else JOptionPane.showMessageDialog(null, "erro ao adicionar universidade");
         }
+        //opcao de alterar uma universidade
         else if(e.getSource() == button2){
-            JOptionPane.showMessageDialog(null, "universidade alterada com sucesso");
+            String nom_uni = JOptionPane.showInputDialog("Atuais universidades:\n" + gerencia.imprimirListaUniversidade() + "\nDigite a universidade a ser alterada:");
+            String nome = JOptionPane.showInputDialog("Digite o nome da universidade:");
+            String estado = JOptionPane.showInputDialog("Digite o estado onde a universidade fica:");
+            String cidade = JOptionPane.showInputDialog("Digite a cidade onde a universidade fica:");
+            String diretor = JOptionPane.showInputDialog("Digite o nome do diretor:");
+
+            if(gerencia.alterarUniversidade(nom_uni, nome, estado, cidade, diretor))JOptionPane.showMessageDialog(null, "universidade alterada com sucesso");
+            else JOptionPane.showMessageDialog(null, "erro ao alterar universidade");
         }
+        //opcao de listar todas as universidades
         else if(e.getSource() == button3){
-            JOptionPane.showMessageDialog(null, "(lista de universidades aqui)");
+            JOptionPane.showMessageDialog(null, gerencia.imprimirListaUniversidade());
         }
+        //opcao de excluir uma universidade
         else if(e.getSource() == button4){
-            JOptionPane.showMessageDialog(null, "universidade excluida com sucesso");
+            String nome = JOptionPane.showInputDialog("Atuais universidades:\n" + gerencia.imprimirListaUniversidade() + "\nDigite o nome da universidade:");
+            
+            if(gerencia.removerUniversidade(nome))JOptionPane.showMessageDialog(null, "universidade excluida com sucesso");
+            else JOptionPane.showMessageDialog(null, "erro ao excluir universidade");
         }
     }
 }

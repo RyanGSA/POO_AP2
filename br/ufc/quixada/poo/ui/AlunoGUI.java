@@ -64,13 +64,14 @@ public class AlunoGUI implements ActionListener {
         //opcao de adicionar um aluno
         if(e.getSource() == button){
             String nome_uni = JOptionPane.showInputDialog("Digite o nome da universidade:");
+            String nome_cur = JOptionPane.showInputDialog("Digite o nome do curso:");
             String nome = JOptionPane.showInputDialog("Digite o nome do aluno:");
             int ano = Integer.parseInt(JOptionPane.showInputDialog("Digite o ano de ingresso do aluno:"));
             int matricula = Integer.parseInt(JOptionPane.showInputDialog("Digite a matricula do aluno:"));
 
             Aluno m = new Aluno(nome,ano,matricula);
             
-            if(gerencia.adicionarAluno(nome_uni, m))JOptionPane.showMessageDialog(null, "aluno adicionado com sucesso");
+            if(gerencia.adicionarAluno(nome_uni, nome_cur, m))JOptionPane.showMessageDialog(null, "aluno adicionado com sucesso");
             else JOptionPane.showMessageDialog(null, "erro ao adicionar aluno");
         }
         //opcao de alterar um aluno
@@ -84,9 +85,10 @@ public class AlunoGUI implements ActionListener {
         //opcao de excluir aluno
         else if(e.getSource() == button4){
             String nome_uni = JOptionPane.showInputDialog("Digite o nome da universidade:");
+            String nome_cur = JOptionPane.showInputDialog("Digite o nome do curso:");
             String nome = JOptionPane.showInputDialog("Digite o nome do aluno:");
             
-            if(gerencia.removerAluno(nome_uni, nome))JOptionPane.showMessageDialog(null, "aluno excluido com sucesso");
+            if(gerencia.removerAluno(nome_uni, nome_cur, nome))JOptionPane.showMessageDialog(null, "aluno excluido com sucesso");
             else JOptionPane.showMessageDialog(null, "erro ao excluir aluno");
         }
     }

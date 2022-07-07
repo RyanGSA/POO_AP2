@@ -8,16 +8,17 @@ import br.ufc.quixada.poo.model.Localizacao;
 import br.ufc.quixada.poo.model.Universidade;
 
 public interface GerenciaUniversidade {
+
   // gerenciando as universidades
 
-  // adiciona uma universidade a lista de universidades
+  // adiciona uma universidade
   public boolean adicionarUniversidade(Universidade universidade);
 
-  // remove uma universidade pelo nome
-  public boolean removerUniversidade(String nome);
+  // remove uma universidade
+  public boolean removerUniversidade(String nomeUniversidade);
 
-  // dado um nome da univerdade e um nome, substitui o diretor da universidade
-  public boolean modificarDiretor(String nomeUniversidae, String nomeDiretor);
+  // altera universidade
+  public boolean alterarUniversidade(String nomeUniversidade, String nome, String estado, String cidade, String diretor);
 
   // retorna uma universidade dado o nome
   public Universidade getUniversidade(String nome);
@@ -25,27 +26,38 @@ public interface GerenciaUniversidade {
   // retorna uma lista com as universidades que foram adicionadas
   public ArrayList<Universidade> imprimirListaUniversidade();
 
+
+
   // gerenciando os alunos
 
-  // dado um nome da universidade e um aluno, adiciona um aluno na lista
-  public boolean adicionarAluno(String nomeUniversidade, Aluno aluno);
+  // adiciona um aluno na lista
+  public boolean adicionarAluno(String nomeUniversidade, String nomeCurso, Aluno aluno);
 
-  // dado um nome da universidade e um nome de aluno, remove um aluno na lista
-  public boolean removerAluno(String nomeUniversidade, String nomeAluno);
+  // remove um aluno na lista
+  public boolean removerAluno(String nomeUniversidade, String nomeCurso, String nomeAluno);
 
-  // dado uma universidade e um nome de aluno, retorna um aluno com mesmo nome
-  public Aluno getAluno(Universidade universidade, String nome);
+  // retorna um aluno com mesmo nome
+  public Aluno getAluno(String nomeUniversidade, String nomeCurso, String nomeAluno);
 
-  // dado um nome d, altera o curso
-  public Aluno alterarCurso(String nomeCurso);
-
+  // a grande funcao principal exigida no pdf *********
   public ArrayList<Aluno> procurarCandidatos(Localizacao local, String curso);
+
+
 
   // gerenciando os cursos
 
-  public boolean adicionarCurso(Curso curso);
+  // retorna um curso com mesmo nome
+  public Curso getCurso(String nomeUniversidade, String nomeCurso);
 
-  public boolean removerCurso(String nome);
+  // altera o curso
+  public Aluno alterarCurso(String nomeUniversidade, String nomeCurso);
 
-  public ArrayList<Curso> imprimirListaCurso();
+  // adiciona um curso
+  public boolean adicionarCurso(String nomeUniversidade, Curso curso);
+
+  // remove um curso
+  public boolean removerCurso(String nomeUniversidade, String nomeCurso);
+
+  // imprime todos os cursos
+  public ArrayList<Curso> imprimirListaCurso(String nomeUniversidade);
 }
