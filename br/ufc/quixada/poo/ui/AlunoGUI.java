@@ -95,11 +95,11 @@ public class AlunoGUI implements ActionListener {
         }
         //opcao de excluir aluno
         else if(e.getSource() == button4){
-            String nome_uni = JOptionPane.showInputDialog("Digite o nome da universidade:");
-            String nome_cur = JOptionPane.showInputDialog("Digite o nome do curso:");
-            String nome = JOptionPane.showInputDialog("Digite o nome do aluno:");
+            String nom_uni = JOptionPane.showInputDialog("Atuais universidades:\n" + gerencia.imprimirListaUniversidade() + "\nDigite o nome da universidade:");
+            String nom_cur = JOptionPane.showInputDialog("Atuais cursos:\n" + gerencia.imprimirListaCurso(nom_uni) + "\nDigite o curso:");
+            String nom_alu = JOptionPane.showInputDialog("Atuais alunos:\n" + gerencia.imprimirListaAluno(nom_uni,nom_cur) + "\nDigite o aluno a ser excluido:");
             
-            if(gerencia.removerAluno(nome_uni, nome_cur, nome))JOptionPane.showMessageDialog(null, "aluno excluido com sucesso");
+            if(gerencia.removerAluno(nom_uni, nom_cur, nom_alu))JOptionPane.showMessageDialog(null, "aluno excluido com sucesso");
             else JOptionPane.showMessageDialog(null, "erro ao excluir aluno");
         }
     }

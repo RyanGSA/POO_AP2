@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import br.ufc.quixada.poo.controller.GerenciaUniversidade;
+import br.ufc.quixada.poo.model.Localizacao;
 
 public class TraineeGUI implements ActionListener {
 
@@ -66,7 +67,13 @@ public class TraineeGUI implements ActionListener {
     public void actionPerformed(ActionEvent e){
         //dado um estado, uma cidade e um curso, mostrar os alunos matriculados em cada universidade
         if(e.getSource() == button){
-            JOptionPane.showMessageDialog(null, "option 1");
+            String estado = JOptionPane.showInputDialog("Digite o estado:");
+            String cidade = JOptionPane.showInputDialog("Digite a cidade:");
+            String nom_cur = JOptionPane.showInputDialog("Digite o curso:");
+
+            Localizacao local = new Localizacao(estado, cidade);
+
+            JOptionPane.showMessageDialog(null, gerencia.procurarCandidatos(local, nom_cur));
         }
         //abre menu de alunos
         else if(e.getSource() == button2){

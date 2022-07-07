@@ -66,6 +66,6 @@ public interface GerenciaUniversidade {
 
 
 
-  // a grande funcao principal exigida no pdf *********
+  // dado um estado, uma cidade e um curso, mostrar os alunos matriculados em cada universidade
   public ArrayList<Aluno> procurarCandidatos(Localizacao local, String curso);
 }

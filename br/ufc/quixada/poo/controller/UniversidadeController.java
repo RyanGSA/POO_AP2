@@ -192,10 +192,16 @@ public class UniversidadeController implements GerenciaUniversidade {
   }
 
 
-
+  // dado um estado, uma cidade e um curso, mostrar os alunos matriculados em cada universidade
   @Override
   public ArrayList<Aluno> procurarCandidatos(Localizacao local, String curso) {
-    // TODO Auto-generated method stub
-    return null;
+    ArrayList<Aluno> candidatos = new ArrayList<Aluno>();
+
+    for(int i=0; i<universidades.size(); i++){
+      if(universidades.get(i).getLocal().getEstado().equals(local.getEstado()) && universidades.get(i).getLocal().getCidade().equals(local.getCidade())){
+        candidatos.addAll(getCurso(universidades.get(i).getNome(),curso).getAlunos());
+      }
+    }
+    return candidatos;
   }
 }
