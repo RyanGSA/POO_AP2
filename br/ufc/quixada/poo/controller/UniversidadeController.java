@@ -83,6 +83,21 @@ public class UniversidadeController implements GerenciaUniversidade {
     return adicionei;
   }
 
+  @Override
+  public boolean alterarAluno(String nomeUniversidade, String nomeCurso, String nomeAluno, String nome, int ano, int matricula){
+    Aluno alunoProcurando = getAluno(nomeUniversidade, nomeCurso, nomeAluno);
+    boolean modifiquei = false;
+
+    if (alunoProcurando != null) {
+      alunoProcurando.setNome(nome);
+      alunoProcurando.setAno_ingresso(ano);
+      alunoProcurando.setMatricula(matricula);
+      modifiquei = true;
+    }
+
+    return modifiquei;
+  }
+
   public boolean removerAluno(String nomeUniversidade, String nomeCurso, String nomeAluno) {
     Curso cursoProcurando = getCurso(nomeUniversidade,nomeCurso);
     boolean removi = false;
@@ -108,6 +123,11 @@ public class UniversidadeController implements GerenciaUniversidade {
       }
     }
     return alunoProcurado;
+  }
+
+  @Override
+  public ArrayList<Aluno> imprimirListaAluno(String nomeUniversidade, String nomeCurso) {
+    return getCurso(nomeUniversidade, nomeCurso).getAlunos();
   }
 
 

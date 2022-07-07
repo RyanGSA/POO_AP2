@@ -33,11 +33,17 @@ public interface GerenciaUniversidade {
   // adiciona um aluno na lista
   public boolean adicionarAluno(String nomeUniversidade, String nomeCurso, Aluno aluno);
 
+  // altera um aluno na lista
+  public boolean alterarAluno(String nomeUniversidade, String nomeCurso, String nomeAluno, String nome, int ano, int matricula);
+
   // remove um aluno na lista
   public boolean removerAluno(String nomeUniversidade, String nomeCurso, String nomeAluno);
 
   // retorna um aluno com mesmo nome
   public Aluno getAluno(String nomeUniversidade, String nomeCurso, String nomeAluno);
+
+  // retorna uma lista de alunos
+  public ArrayList<Aluno> imprimirListaAluno(String nomeUniversidade, String nomeCurso);
 
   
 

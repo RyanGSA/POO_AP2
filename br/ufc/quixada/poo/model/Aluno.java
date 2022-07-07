@@ -36,8 +36,10 @@ public class Aluno {
     }
 
     public String toString() {
-        return "nome= " + this.nome +
-                "\n ano_ingresso= " + this.ano_ingresso +
-                "\n matricula= " + this.matricula + "\n";
+        String dados = "\n" +
+            "Nome:" + this.nome + "\n" + 
+            "Ano de ingresso:" + this.ano_ingresso + "\n" +
+            "Matricula:" + this.matricula + "\n";
+        return dados;
     }
 }

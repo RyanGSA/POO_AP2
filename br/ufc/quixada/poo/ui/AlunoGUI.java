@@ -56,6 +56,7 @@ public class AlunoGUI implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setTitle("Menu de Alunos");
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
@@ -63,24 +64,34 @@ public class AlunoGUI implements ActionListener {
     public void actionPerformed(ActionEvent e){
         //opcao de adicionar um aluno
         if(e.getSource() == button){
-            String nome_uni = JOptionPane.showInputDialog("Digite o nome da universidade:");
-            String nome_cur = JOptionPane.showInputDialog("Digite o nome do curso:");
+            String nom_uni = JOptionPane.showInputDialog("Atuais universidades:\n" + gerencia.imprimirListaUniversidade() + "\nDigite o nome da universidade:");
+            String nom_cur = JOptionPane.showInputDialog("Atuais cursos:\n" + gerencia.imprimirListaCurso(nom_uni) + "\nDigite o nome do curso:");
             String nome = JOptionPane.showInputDialog("Digite o nome do aluno:");
             int ano = Integer.parseInt(JOptionPane.showInputDialog("Digite o ano de ingresso do aluno:"));
             int matricula = Integer.parseInt(JOptionPane.showInputDialog("Digite a matricula do aluno:"));
 
             Aluno m = new Aluno(nome,ano,matricula);
             
-            if(gerencia.adicionarAluno(nome_uni, nome_cur, m))JOptionPane.showMessageDialog(null, "aluno adicionado com sucesso");
+            if(gerencia.adicionarAluno(nom_uni, nom_cur, m))JOptionPane.showMessageDialog(null, "aluno adicionado com sucesso");
             else JOptionPane.showMessageDialog(null, "erro ao adicionar aluno");
         }
         //opcao de alterar um aluno
         else if(e.getSource() == button2){
-            JOptionPane.showMessageDialog(null, "aluno alterado com sucesso");
+            String nom_uni = JOptionPane.showInputDialog("Atuais universidades:\n" + gerencia.imprimirListaUniversidade() + "\nDigite o nome da universidade:");
+            String nom_cur = JOptionPane.showInputDialog("Atuais cursos:\n" + gerencia.imprimirListaCurso(nom_uni) + "\nDigite o curso:");
+            String nom_alu = JOptionPane.showInputDialog("Atuais alunos:\n" + gerencia.imprimirListaAluno(nom_uni,nom_cur) + "\nDigite o aluno a ser alterado:");
+            String nom = JOptionPane.showInputDialog("Digite o nome do aluno:");
+            int ano = Integer.parseInt(JOptionPane.showInputDialog("Digite o ano de ingresso do aluno:"));
+            int matricula = Integer.parseInt(JOptionPane.showInputDialog("Digite a matricula do aluno:"));
+
+            if(gerencia.alterarAluno(nom_uni,nom_cur,nom_alu,nom,ano,matricula))JOptionPane.showMessageDialog(null, "curso alterado com sucesso");
+            else JOptionPane.showMessageDialog(null, "erro ao alterar curso");
         }
         //opcao de listar todos os alunos
         else if(e.getSource() == button3){
-            JOptionPane.showMessageDialog(null, "(lista de alunos aqui)");
+            String nom_uni = JOptionPane.showInputDialog("Atuais universidades:\n" + gerencia.imprimirListaUniversidade() + "\nDigite o nome da universidade:");
+            String nom_cur = JOptionPane.showInputDialog("Atuais cursos:\n" + gerencia.imprimirListaCurso(nom_uni) + "\nDigite o nome do curso:");
+            JOptionPane.showMessageDialog(null, gerencia.imprimirListaAluno(nom_uni, nom_cur));
         }
         //opcao de excluir aluno
         else if(e.getSource() == button4){
